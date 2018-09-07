@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      name: common-config
+      profile: pro
+      label: master
+      discovery:
+        enabled: true
+        serviceId: SPRING-CLOUD-CONFIG-SERVER
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+zuul:
+  routes:
+    spring-cloud-config-client: /configClient/**
