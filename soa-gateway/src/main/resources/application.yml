@@ -1,0 +1,27 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: gateway
+  cloud:
+    inetutils:
+      preferred-networks:
+        - 10.0.0
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  ignored-services: "*"
+  routes:
+    spring-cloud-config-server: /configCenter/**
+    spring-cloud-config-client: /configClient/**
+  sensitive-headers: Cookie,Set-Cookie
+  host:
+    connect-timeout-millis: 60000
+
+management:
+  security:
+    enabled: false
